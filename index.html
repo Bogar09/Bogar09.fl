@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles Especiales</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #0b0423;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 span {
+            display: inline-block;
+            opacity: 0;
+            animation: illuminate 2s forwards, fadeOut 3s 2s forwards;
+        }
+
+        @keyframes illuminate {
+            0% {
+                opacity: 0;
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            }
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .action-button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #4CAF50 0%, #81C784 100%);
+            color: white;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            opacity: 0; /* Inicialmente invisible */
+            animation: fadeIn 1s 5s forwards; /* Aparece después de 5 segundos */
+        }
+
+        .action-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="message">
+            <span>S</span><span>é</span> <span>l</span><span>o</span> <span>m</span><span>u</span><span>c</span><span>h</span><span>o</span> <span>q</span><span>u</span><span>e</span><br>
+            <span>t</span><span>e</span> <span>g</span><span>u</span><span>s</span><span>t</span><span>a</span><span>n</span> <span>e</span><span>s</span><span>t</span><span>o</span><span>s</span><br>
+            <span>d</span><span>e</span><span>t</span><span>a</span><span>l</span><span>l</span><span>e</span><span>s</span>,<br>
+            <span>a</span><span>s</span><span>í</span> <span>q</span><span>u</span><span>e</span><span>.</span><span>.</span><span>.</span>
+        </h1>
+        <button class="action-button" id="actionButton">Descubrir</button>
+    </div>
+
+    <script>
+        const actionButton = document.getElementById("actionButton");
+        const messageSpans = document.querySelectorAll("#message span");
+
+        // Animación letra por letra
+        messageSpans.forEach((span, index) => {
+            span.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Repetir la animación del texto cada 6 segundos
+        setInterval(() => {
+            messageSpans.forEach((span, index) => {
+                span.style.animation = "none";
+                setTimeout(() => {
+                    span.style.animation = "";
+                }, 10);
+            });
+        }, 6000); // 6 segundos
+
+        // Redirigir al hacer clic en el botón "Descubrir"
+        actionButton.addEventListener("click", () => {
+            window.location.href = "Flores.html";
+        });
+    </script>
+</body>
+</html>
